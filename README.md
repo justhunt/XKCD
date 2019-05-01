@@ -4,6 +4,7 @@ TCMG 316 XKCD Project
 ----------ELASTICSEARCH XKCD INDEX MAPPING:----------
 
 The scripts will not work without this xkcd mapping:
+
 PUT /xkcd
 {
 	"settings": {
@@ -79,21 +80,26 @@ PUT /xkcd
 ----------CHANGES TO SCRIPTS:----------
 
 In the xkcd_store.py script, replace these things with your information:
-  Line 6, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the "/xkcd/_search?pretty" on the end.
-      > Line 6  >   URL = "<paste your deployment's URL endpoint from Elasticsearch>/xkcd/_search?pretty"
-  Line 17, change " 'elastic' " to your username for logging into your elastic DEPLOYMENT, not the same as logging into ElasticSearch.
-  Do the same with " 'password' ".
-      > Line 17 >   response = requests.get(URL, data=query, auth=HTTPBasicAuth('elastic', 'password'), headers={'content-type': 'application/json'})
+  
+	Line 6, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the "/xkcd/_search?pretty" on the end.
+		> Line 6  >   URL = "<paste your deployment's URL endpoint from Elasticsearch>/xkcd/_search?pretty"
+
+	Line 17, change " 'elastic' " to your username for logging into your elastic DEPLOYMENT, not the same as logging into ElasticSearch. Do the same with " 'password' ".
+      		> Line 17 >   response = requests.get(URL, data=query, auth=HTTPBasicAuth('elastic', 'password'), headers={'content-type': 'application/json'})
 
 In the post.py script, replace the following items with your information:
-  Line 5, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the ' "/xkcd/_bulk" 'on the end.
-      > Line 5  >   ELASTIC_URL = "https://<Your URL Endpoint Here>/xkcd/_bulk"
-  Line 7, change " 'elastic' " to your personal username for logging into your elastic deployment. Do the same with " 'password' ".
-      > Line 7  >   r = requests.post(ELASTIC_URL, auth=HTTPBasicAuth('elastic', 'password'), headers = {'content-type': 'application/x-ndjson'}, data = open('6test.json', 'rb'))
+  
+  	Line 5, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the ' "/xkcd/_bulk" 'on the end.
+      		> Line 5  >   ELASTIC_URL = "https://<Your URL Endpoint Here>/xkcd/_bulk"
+  
+	Line 7, change " 'elastic' " to your personal username for logging into your elastic deployment. Do the same with " 'password' ".
+      		> Line 7  >   r = requests.post(ELASTIC_URL, auth=HTTPBasicAuth('elastic', 'password'), headers = {'content-type': 'application/x-ndjson'}, data = open('6test.json', 'rb'))
 
 In the search.py script, replace the following items with your information:\
-  Line 4, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the ' "/xkcd/_search?q=" 'on the end.
-      > Line 4  >   URL = "https://<Your URL Endpoint Here>/xkcd/_search?q="
-  Line 11, change " 'elastic' " to your personal username for logging into your elastic deployment. Do the same with " 'password' ".
-      > Line 11 >   search = requests.get(url = URL + word, auth = HTTPBasicAuth('elastic', 'password'))
+  
+	Line 4, change the URL endpoint to match your URL endpoint from ElasticSearch. Leave the ' "/xkcd/_search?q=" 'on the end.
+      		> Line 4  >   URL = "https://<Your URL Endpoint Here>/xkcd/_search?q="
+  
+	Line 11, change " 'elastic' " to your personal username for logging into your elastic deployment. Do the same with " 'password' ".
+      		> Line 11 >   search = requests.get(url = URL + word, auth = HTTPBasicAuth('elastic', 'password'))
     
