@@ -3,7 +3,7 @@ import json, requests, datetime, sys
 from datetime import datetime, date
 from requests.auth import HTTPBasicAuth
 
-URL = "https://c85eff0a49b345feb08db5d00c7b79e9.us-central1.gcp.cloud.es.io:9243/xkcd/_search?pretty"
+URL = "https://<URL Endpoint>/xkcd/_search?pretty"
 results = {}
 
 ###Gets the last comic number from our database. This will be used for the base value of range when we need to update our database###
@@ -14,7 +14,7 @@ query = json.dumps({
 			"max": {
 				"field": "num" } } } }
 )
-response = requests.get(URL, data=query, auth=HTTPBasicAuth('elastic', 'LyIlTmQtozDEJubpkpqwwbNU'), headers={'content-type': 'application/json'})
+response = requests.get(URL, data=query, auth=HTTPBasicAuth('elastic', 'password'), headers={'content-type': 'application/json'})
 results = json.loads(response.text)
 for k in results:
 	if k == 'aggregations':
