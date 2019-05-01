@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import json, string, requests
 from requests.auth import HTTPBasicAuth
-URL = "https://c85eff0a49b345feb08db5d00c7b79e9.us-central1.gcp.cloud.es.io:9243/xkcd/_search?q="
+URL = "https://<URL Endpoint>/xkcd/_search?q="
 xkcd = {}
 
 ###Asks the user what they would like to search for###
 word = input("Is there and XKCD for that? Let's find out! Please tell me what you would like to find: ")
 
 ###Takes the input from the user and searches our database for the word###
-search = requests.get(url = URL + word, auth = HTTPBasicAuth('elastic', 'LyIlTmQtozDEJubpkpqwwbNU'))
+search = requests.get(url = URL + word, auth = HTTPBasicAuth('elastic', 'password'))
 
 ###finds a good search result and puts all of the data into a dictionary so we can manipulate what info we want###
 xkcd = json.loads(search.text)
