@@ -103,3 +103,6 @@ In the search.py script, replace the following items with your information:\
 	Line 11, change " 'elastic' " to your personal username for logging into your elastic deployment. Do the same with " 'password' ".
       		> Line 11 >   search = requests.get(url = URL + word, auth = HTTPBasicAuth('elastic', 'password'))
     
+Directions for after you have downloaded each file, and have made the apporpriate changes to the files to fit your personal information
+
+	First, run xkcd_store.py, this will take a couple minutes. Then run post.py to post all of the json data into elasticsearch. Then you can run search.py to search for a comic. Enjoy!
